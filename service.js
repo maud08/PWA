@@ -25,15 +25,29 @@ if(workbox){
             url: "index.html"
         },
         {
-            url: "style.css"
-        },
-        {
-            url: "img/pwa192.png"
-        },
-        {
             url: "main.js"
         }
     ])
+
+    workbox.routing.registerRoute(
+        /(.*)\.(?:png|gif|jpg|jpeg|css)$/,
+        new workbox.strategies.CacheFirst({
+            cacheName: "design-cache",
+            plugins :[
+                new workbox.cacheableResponse.CacheableResponsePlugin({
+                    maxEntries : 50,
+                    maxAgeSeconds: 30 * 24 * 60 * 60 //30 days
+                })
+            ]
+        })
+    )
+
+    workbox.routing.registerRoute(
+        "https://api.punkapi.com/v2/beers",
+        new workbox.strategies.NetworkFirst({
+            cacheName: "api-cache"
+        })
+    )
 }
 else{
     console.log("alert", "error Workbox")

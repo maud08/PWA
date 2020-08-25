@@ -1,3 +1,12 @@
+axios.get("https://api.punkapi.com/v2/beers")
+.then(reponse => {
+    let ul = document.querySelector(".beers")
+    let beers= ""
+    reponse.data.forEach(element =>{
+        beers+=`<li>${element.name}</li>`
+    });
+    ul.innerHTML = beers
+})
 if('serviceWorker' in navigator){
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service.js')
