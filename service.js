@@ -2,7 +2,8 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
 
-const version = '0.0.2';
+const version = '2';
+const oldVersion = '-1'
 
 self.addEventListener('install', event => {
     console.log('Install' + version)
@@ -11,6 +12,10 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event =>{
     console.log('activate')
+    event.waitUntil(
+        caches.delete('desing-cache-' + oldVersion),
+        caches.delete('appi-cache-' + oldVersion)
+    )
     return self.clients.claim();
 })
 
@@ -32,7 +37,7 @@ if(workbox){
     workbox.routing.registerRoute(
         /(.*)\.(?:png|gif|jpg|jpeg|css)$/,
         new workbox.strategies.CacheFirst({
-            cacheName: "design-cache",
+            cacheName: "design-cache-"+version,
             plugins :[
                 new workbox.cacheableResponse.CacheableResponsePlugin({
                     maxEntries : 50,
@@ -45,7 +50,7 @@ if(workbox){
     workbox.routing.registerRoute(
         "https://api.punkapi.com/v2/beers",
         new workbox.strategies.NetworkFirst({
-            cacheName: "api-cache"
+            cacheName: "api-cache-"+version
         })
     )
 }
