@@ -17,6 +17,7 @@ if('serviceWorker' in navigator){
             console.log('alert', 'Erreur de service worker with' + error)
         })
     })
+    
 
 }
 else{
