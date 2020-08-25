@@ -2,8 +2,8 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
 
-const version = '2';
-const oldVersion = '-1'
+const version = 2;
+const oldVersion = version -1
 
 self.addEventListener('install', event => {
     console.log('Install' + version)
