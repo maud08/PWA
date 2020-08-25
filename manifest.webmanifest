@@ -1,0 +1,27 @@
+{
+    "short_name": "PWA",
+    "name": "Exemple manifest",
+    "theme_color": "#eb5252",
+    "background_color": "#000000",
+    "display": "fullscreen",
+    "Scope": "/",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "img/pwa48.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "img/pwa96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "img/pwa192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "index.html?utm_source=homescreen"
+  }
