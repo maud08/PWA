@@ -4,7 +4,7 @@ body{
 .install{
     position: absolute;
     bottom: 0;
-    background: red;
+    background: green;
     height: 15px;
     width: 100%;
     display: none;
